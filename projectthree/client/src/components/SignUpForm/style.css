@@ -1,0 +1,23 @@
+form.search {
+  overflow: auto;
+  margin-bottom: 20%;
+}
+
+form.search button[type="submit"] {
+  float: right;
+  margin-top: 20%;
+}
+
+.Card {
+  margin: 50%;
+}
+
+.Form {
+  margin: 50%;
+}
+
+
+.FormGroup{
+  margin: 50%;
+
+}
