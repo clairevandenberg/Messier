@@ -53,14 +53,14 @@ function Journal () {
         .catch(err => console.log(err));
     }
 }
-
   return (
+    
     // JOURNAL YOUR THOUGHTS HERE
 <Container fluid>
         <Row>
-          <Col size="md-6">
+          <Col size="md-5">
             <Jumbotron>
-              <h1>Start Journaling</h1>
+              <h1>Whats on your mind..?</h1>
             </Jumbotron>
             <form>
               <Input
@@ -84,7 +84,7 @@ function Journal () {
 
 
       {/* JOURNAL IS DISPLAYED HERE */}
-          <Col size="md-6 sm-12">
+          <Col size="md-5 sm-12">
           <Jumbotron>
               <h1>Saved Journal</h1>
             </Jumbotron>

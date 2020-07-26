@@ -1,1 +1,43 @@
 
+
+button.button.btn-success {
+    background-color: white;
+    color: black;
+    border-color: black;
+    width: 100%;
+    align-items: center;
+    
+}
+
+button.btn.btn-success {
+    background-color: white;
+    color: black;
+    border-color: black;
+    margin-left: 40%;
+    margin-right: 40%;
+}
+
+.card {
+    margin: 10%;
+    border-color: white;
+    color: white;
+    background: white;
+    outline: white;
+
+
+}
+.card-body {
+    margin: 10%;
+    border-color: white;
+    color: white;
+    background: white;
+    outline: white;
+}
+
+#exampleemail.form-control {
+    border-color: black;
+}
+
+#examplePassword.form-control {
+    border-color: black;
+}

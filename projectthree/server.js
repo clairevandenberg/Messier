@@ -1,6 +1,5 @@
 // require("dotenv").config();
 let express = require("express");
-var path = require('path');
 let app = express();
 
 let PORT = process.env.PORT || 8080;
@@ -20,8 +19,8 @@ if (process.env.NODE_ENV === "production") {
 
 // Add routes, both API and view
 // =============================================================
-app.use (require("./controllers/moodTracker.js"));
-require('./controllers/journal')(app)
+// app.use (require("./controllers/moodTracker.js"));
+// require('./controllers/journal')(app)
 
 
 // Syncs models and starts the server to begin listening
