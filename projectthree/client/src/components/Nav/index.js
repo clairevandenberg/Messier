@@ -15,7 +15,7 @@ function Nav() {
         JOURNAL
       </Link>
 
-      <Link className="navbar-brand navbar navbar-expand-lg navbar-light bg-light"  to="/mood">
+      <Link className="navbar-brand navbar navbar-expand-lg navbar-light bg-light"  to="/moodTracker">
         MOOD
       </Link>
 

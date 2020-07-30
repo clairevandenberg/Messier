@@ -54,7 +54,7 @@ function Journal () {
     }
 }
   return (
-    
+
     // JOURNAL YOUR THOUGHTS HERE
 <Container fluid>
         <Row>
@@ -77,7 +77,7 @@ function Journal () {
                 disabled={!(formObject.title && formObject.journalFeild)}
                 onClick={handleFormSubmit}
               >
-                Submit Journal
+                Save
               </FormBtn>
             </form>
           </Col>

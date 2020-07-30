@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, } from "react";
 import { Container, Row, Col } from "../components/Grid";
 import "./style.css";
 import { Card } from "react-bootstrap";
 import { Input } from "../components/Form";
 import Jumbotron from "../components/Jumbotron";
+
 
 function Login (){
 
@@ -15,6 +16,7 @@ function Login (){
     console.log("username is " + username);
     console.log("password is " + password);
   };
+
 
   return (
     <Container fluid>
@@ -58,12 +60,13 @@ function Login (){
                  </Card.Body>
 
                  <Card.Body>
-                 <button className="button btn-success" type="redirect">
-                    CREATE ACCOUNT
-                  </button>
-                 </Card.Body>
 
-         
+                <button className="button btn-success"> 
+                    CREATE ACCOUNT
+                </button>
+                 </Card.Body>
+                 
+
       </Card>
     </form>
   </Container>         

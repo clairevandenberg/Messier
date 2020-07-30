@@ -6,7 +6,7 @@ module.exports = {
     "password": process.env.SQLPASSWORD,
     "database": "journal_db",
     "host": "localhost",
-    "port": 8080,
+    "port": 3002,
     "dialect": "mysql"
   },
 
@@ -22,7 +22,7 @@ module.exports = {
     "username": "admin",
     "password": process.env.TRENT,
     "database": "journal_db",
-    "host": "musicdb-g2.cykqhanvgs0f.ap-southeast-2.rds.amazonaws.com",
+    // "host": "musicdb-g2.cykqhanvgs0f.ap-southeast-2.rds.amazonaws.com",
     "dialect": "mysql"
   }
 }
