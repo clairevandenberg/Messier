@@ -4,7 +4,7 @@ import "./style.css";
 function Footer() {
   return (
     <footer className="footer">
-      <span>Claire Vandenberg 2020</span>
+      <span>MESSIER</span>
     </footer>
   );
 }

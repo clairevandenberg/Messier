@@ -6,6 +6,7 @@ import Login from "./pages/Login";
 import MoodTracker from "./pages/MoodTracker"
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
+import SignUp from "./pages/SignUp"
 
 function App() {
   return (
@@ -16,7 +17,9 @@ function App() {
           <Route exact path="/" component={Login} />
           <Route exact path="/journal" component={Journal} />
           <Route exact path="/moodTracker" component={MoodTracker} />
-          <Route exact path="/usersaccount" component={UsersAccount} />
+          <Route exact path="/usersAccount" component={UsersAccount} />
+          <Route exact path="/signUp" component={SignUp} />
+
         
         <Footer />
       </div>

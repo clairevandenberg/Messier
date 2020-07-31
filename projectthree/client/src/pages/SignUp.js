@@ -1,6 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, } from "react";
 import { Container, Row, Col } from "../components/Grid";
-// import Form from "../components/Form";
+import "./style.css";
+import { Card } from "react-bootstrap";
+import Jumbotron from "../components/Jumbotron";
+import Button from 'react-bootstrap/Button'
+
 
 function SignUp (){
 
@@ -15,12 +19,15 @@ function SignUp (){
 
 
   return (
-    <div>
- <form onSubmit={handleSubmit}>
-        <Container className="mt-3 px-5">
-         
-          <Row className="form-group">
-            <Col size="12">
+    <Container fluid>
+    <form onSubmit={handleSubmit}>
+         <Card.Body>
+         <Jumbotron>
+              <h1>Sign In</h1>
+            </Jumbotron>
+
+            <Row className="form-group">
+            <Col size="md-6">
                   <input 
                   className="form-control"
                   type="firstName" 
@@ -29,10 +36,8 @@ function SignUp (){
                   placeholder="First Name" 
                   />
                 </Col>
-                </Row>
 
-               <Row className="form-group">
-            <Col size="12">
+                <Col size="md-6">
                   <input 
                   className="form-control"
                   type="lastName" 
@@ -44,8 +49,9 @@ function SignUp (){
                 </Row>
 
                 <Row className="form-group">
-            <Col size="12">
+                <Col size="md-12">
                   <input 
+                  className="form-control"
                   type="dob"
                   name="dob" 
                   id="exampledob" 
@@ -56,8 +62,9 @@ function SignUp (){
 
 
                   <Row className="form-group">
-            <Col size="12">
-                  <input 
+                  <Col size="md-12">
+                  <input                   
+                  className="form-control"
                   type="email"
                   name="email" 
                   id="exampleemail" 
@@ -69,8 +76,9 @@ function SignUp (){
 
                
                   <Row className="form-group">
-            <Col size="12">
+                  <Col size="md-12">
                   <input 
+                  className="form-control"
                   type="password" 
                   name="password" 
                   id="examplePassword" 
@@ -80,18 +88,19 @@ function SignUp (){
                   </Col>
                   </Row>
 
-          <button className="btn btn-success" type="submit">
-            Submit
-          </button>
+                  <Row className="form-group">
+                  <Col size="md-12">
+                  <Button className="buttonSubmit" type="submit" href="/usersAccount">
+                    Create Account
+                  </Button>                  
+                  </Col>
+                  </Row> 
+                 </Card.Body>
 
           
-      </Container>
     </form>
-  </div>
+  </Container>
       
       );
     }
 export default SignUp;
-
-
-

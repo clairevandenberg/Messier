@@ -1,16 +1,23 @@
-.footer {
-  min-height: 100px;
-  background: #E5E5E5;
-  position: relative;
-  align-items: center;
-  
-}
+
 
 .footer span {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
   padding: 3px;
+  background: #000034;
+  max-height: 70px;
+    font-family: 'Modak', cursive;
+    color: #1D84D7;
+text-align: center;
+};
+
+.footer h1 {
+  min-height: 50px;
   background: #B8B8B8;
-}
+  position: relative;
+  align-items: center;
+  text-align: center;
+  font-size: xx-small;
+};

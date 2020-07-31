@@ -6,7 +6,7 @@ import DeleteBtn from "../components/DeleteBtn";
 import { Input, TextArea, FormBtn } from "../components/Form";
 import API from "../utils/API";
 import Jumbotron from "../components/Jumbotron";
-import "../pages/journal.css"
+import "../pages/style.css"
 
 function Journal () {
     
@@ -58,7 +58,7 @@ function Journal () {
     // JOURNAL YOUR THOUGHTS HERE
 <Container fluid>
         <Row>
-          <Col size="md-5">
+          <Col size="md-6">
             <Jumbotron>
               <h1>Whats on your mind..?</h1>
             </Jumbotron>
@@ -84,7 +84,7 @@ function Journal () {
 
 
       {/* JOURNAL IS DISPLAYED HERE */}
-          <Col size="md-5 sm-12">
+          <Col size="md-6 sm-12">
           <Jumbotron>
               <h1>Saved Journal</h1>
             </Jumbotron>

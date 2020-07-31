@@ -1,32 +1,46 @@
   
 import React from 'react';
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import "./style.css";
+import { Container } from "../Grid";
+import Nav from 'react-bootstrap/Nav'
 
-function Nav() {
+function NavBar() {
   return (
     <div>
-      <nav>
-      <Link className="messier navbar-brand navbar navbar-expand-lg navbar-light bg-light" href="/">
-      MESSIER
-      </Link>
+      <Container>
+        <Nav fill variant="tabs" defaultActiveKey="/login">
+        
+        <Nav.Item>
+        <Nav.Link className="messier navbar-brand navbar navbar-expand-lg" href="/usersAccount">
+        MESSIER
+        </Nav.Link>
+        </Nav.Item>
+   
+        <Nav.Item>
+        <Nav.Link className=" navbar-brand navbar navbar-expand-lg" href="/journal">
+        Journal
+        </Nav.Link>
+        </Nav.Item>
 
-      <Link className="navbar-brand navbar navbar-expand-lg navbar-light bg-light"  to="/journal">
-        JOURNAL
-      </Link>
 
-      <Link className="navbar-brand navbar navbar-expand-lg navbar-light bg-light"  to="/moodTracker">
-        MOOD
-      </Link>
+        <Nav.Item>
+        <Nav.Link className=" navbar-brand navbar navbar-expand-lg" href="/moodTracker">
+        Mood
+        </Nav.Link>
+        </Nav.Item>
 
+{/* 
+        <Nav.Item>
+        <Nav.Link className=" navbar-brand navbar navbar-expand-lg" href="/usersAccount">
+        Account
+        </Nav.Link>
+        </Nav.Item> */}
 
-      <Link className="navbar-brand navbar navbar-expand-lg navbar-light bg-light"  to="usersAccount">
-        ACCOUNT
-      </Link>
-      
-      </nav>
+      </Nav>
+      </Container>
     </div>
   );
 }
 
-export default Nav;
+export default NavBar;

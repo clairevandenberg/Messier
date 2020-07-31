@@ -1,12 +1,26 @@
-.navbar-brand {
-  font-family: 'STSong';
+.navbar {
+  position: fixed;
+  font-family: 'Montserrat', sans-serif;;
   color: #000000;
-  font-size: 100%;
-  
-
+  background-color: white; 
 }
+
 .messier{
 font-family: 'Modak', cursive;
-font-size: 100%;
 color: #1D84D7;
+}
+
+.messier.navbar-brand.navbar.navbar-expand-lg {
+  align-self: center;
+  align-items: center;
+  align-content: center;
+  text-align-last: center;
+  max-width: 100%;
+
+
+}
+
+.div.nav.nav-tabs.nav-fills{
+  color: white;
+  border-color: white;
 }

@@ -1,27 +1,37 @@
 import React from "react";
-import Container from "../components/Container";
-import Row from "../components/Row";
-import Col from "../components/Col";
-
-
+import { Container, Row, Col } from "../components/Grid";
+import "./style.css";
+import Jumbotron from "../components/Jumbotron";
+import Button from 'react-bootstrap/Button';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 function UsersAccount() {
     return (
       <div>
-          
-        <Container style={{ marginTop: 30 }}>
+        <Container>
           <Row>
             <Col size="md-12">
-              <h1>Users Account Profile</h1>
+            <Jumbotron>
+            <h1> Welcome John Doe </h1>
+            </Jumbotron>
             </Col>
-          </Row>
+        </Row>
+
+            <Row>   
+            <Col size="md-6">
+            <Button className="Userbutton" href="/moodTracker">Start Tracking Your Mood...
+            <FontAwesomeIcon icon={['fa', 'edit']}/>
           
-          <Row>
-            <Col size="md-12">
-            <h2>John Doe</h2>
-            
+            </Button>
             </Col>
-          </Row>
+
+            <Col size="md-6 sm-12">
+            <Button className="Userbutton" href="/journal">Start Journaling.
+            <FontAwesomeIcon icon={['fa', 'chart-line']}/>
+            </Button>
+            </Col>
+            </Row>
+
         </Container>
       </div>
     );

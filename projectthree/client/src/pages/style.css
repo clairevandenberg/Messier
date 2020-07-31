@@ -1,24 +1,40 @@
+
+
 h3 {
     color: black;
-    font-family: "STSong";
+    font-family: 'Montserrat', sans-serif;;
 
 }
 
 button.button.btn-success {
     background-color: white;
     color: black;
-    font-family: "STSong";
+    font-family: 'Montserrat', sans-serif;;
     border-color: black;
     width: 100%;
     align-items: center;
     
 }
 
+input.form-control{
+background-color: white;
+border-color: black;
+font-family: 'Montserrat', sans-serif;;
+
+
+}
+textarea.form-control{
+background-color: white;
+border-color: black;
+font-family: 'Montserrat', sans-serif;;
+
+}
+
 button.btn.btn-success {
     background-color: white;
     color: black;
-    border-color: white;
-    font-family: "STSong";
+    border-color: black;
+    font-family: 'Montserrat', sans-serif;;
     margin-left: 40%;
     margin-right: 40%;
 }
@@ -49,7 +65,7 @@ button.btn.btn-success {
 .gmoodBtton.btn-success {
     background-color: green;
     color: black;
-    font-family: "STSong";
+    font-family: 'Montserrat', sans-serif;;
     border-color: green;
     width: 33%;
     align-items: right;
@@ -58,7 +74,7 @@ button.btn.btn-success {
 .ymoodBtton.btn-success {
     background-color: yellow;
     color: black;
-    font-family: "STSong";
+    font-family: 'Montserrat', sans-serif;
     border-color: yellow;
     width: 33%;
     align-items: center;
@@ -67,9 +83,55 @@ button.btn.btn-success {
 .rmoodBtton.btn-success {
     background-color: red;
     color: black;
-    font-family: "STSong";
+    font-family: 'Montserrat', sans-serif;;
     border-color: red;
     width: 33%;
     align-items: left;
 }
 
+a.buttonAccont.btn.btn-primary{
+    background-color: white;
+    color: black;
+    font-family: 'Montserrat', sans-serif;;
+    border-color: black;
+    width: 100%;
+    align-items: center;
+    
+}
+
+
+a.buttonSubmit.btn.btn-primary{
+    background-color: white;
+    color: black;
+    font-family: 'Montserrat', sans-serif;
+    border-color: black;
+    width: 50%;
+    margin-left: 25%;
+    margin-right: 25%;
+}
+
+h1 {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.Jumbotron {
+    font-family: 'Montserrat', sans-serif;
+}
+
+a.Userbutton.btn.btn-primary{
+    background-color: white;
+    color: black;
+    font-family: 'Montserrat', sans-serif;;
+    border-color: black;
+    width: 100%;
+    height: 100px;
+    align-items: center;
+}
+
+.buttonSubmit.btn.btn-primary{
+    margin-top: 10%;
+}
+
+.form-control {
+    margin-top: 4%;
+}

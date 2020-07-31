@@ -4,7 +4,7 @@ import "./style.css";
 import { Card } from "react-bootstrap";
 import { Input } from "../components/Form";
 import Jumbotron from "../components/Jumbotron";
-
+import Button from 'react-bootstrap/Button'
 
 function Login (){
 
@@ -21,10 +21,9 @@ function Login (){
   return (
     <Container fluid>
     <form onSubmit={handleSubmit}>
-       <Card>
          <Card.Body>
          <Jumbotron>
-              <h1>SIGN IN</h1>
+              <h1>Sign In</h1>
             </Jumbotron>
 
             <Row className="form-group">
@@ -52,22 +51,17 @@ function Login (){
 
                   <Row className="form-group">
                   <Col size="md-12">
-                  <button className="btn btn-success" type="submit">
+                  <Button className="buttonSubmit" type="submit" href="/usersAccount">
                     LOGIN
-                  </button>
+                  </Button>                  
                   </Col>
                   </Row> 
                  </Card.Body>
 
                  <Card.Body>
-
-                <button className="button btn-success"> 
-                    CREATE ACCOUNT
-                </button>
+                 <Button className="buttonAccont" href="/signUp">Create Account</Button>
                  </Card.Body>
                  
-
-      </Card>
     </form>
   </Container>         
        
