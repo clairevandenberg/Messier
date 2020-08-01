@@ -13,6 +13,7 @@
   "author": "Claire Vandenberg",
   "license": "MIT",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "bootstrap": "^4.5.0",
     "chart.js": "^2.9.3",
     "dotenv": "^8.2.0",
@@ -31,7 +32,6 @@
     "sqlite3": "^5.0.0",
     "tedious": "^8.3.0"
   },
-  "proxy": "http://localhost:3002",
   "devDependencies": {
     "nodemon": "^2.0.4",
     "sequelize-cli": "^6.2.0"

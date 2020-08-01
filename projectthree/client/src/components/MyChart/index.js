@@ -1,15 +1,15 @@
 import React from 'react';
-import "./style.css";
-import MoodTracker from './MoodTracker';
+import "../../pages/style.css";
+import MoodTracker from '../../pages/MoodTracker';
 
-class LineChart extends React.Component {
+class Chart extends React.Component {
     constructor(props) {
       super(props);
       this.chartRef = React.createRef();
     }
   
     componentDidUpdate() {
-      this.myChart.data.labels = this.props.data.reversed.map(t => t.date);
+      this.myChart.data.label = this.props.data.reversed.map(t => t.date);
       this.myChart.data.datasets[0].data = this.props.reversed.data.map(t => t.value);
       this.myChart.update();
     }
@@ -18,12 +18,12 @@ class LineChart extends React.Component {
       this.myChart = new Chart(this.chartRef.current, {
     type: 'line',
     data: {
-      labels,
+      label: ['Red', 'Yellow', 'Green'],
       datasets: [{
           label: "Mood Over Time",
           fill: true,
           backgroundColor: "#1D84D7",
-          data
+          data: [12, 19, 3, 5, 2, 3]
       }]
   }
 });
@@ -44,4 +44,4 @@ class LineChart extends React.Component {
   }
 
 
-  export default LineChart;
+  export default Chart;

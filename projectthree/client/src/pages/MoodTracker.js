@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from 'react-dom';
-import LineChart from "../components/MyChart";
+import Chart from "../components/MyChart";
 import ReactEchartsCore from 'echarts-for-react/lib/core';
 import { Container, Row, Col } from "../components/Grid";
 import "./style.css";
@@ -202,7 +202,7 @@ document.querySelector("#saveMood-btn").onclick = function() {
           </Card.Body>
           <div className="main chart-wrapper">
           <ReactEchartsCore
-          LineChart={LineChart}
+          Chart={Chart}
           />
           </div>
           <Card.Body>

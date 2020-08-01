@@ -6,7 +6,6 @@ module.exports = {
     "password": process.env.SQLPASSWORD,
     "database": "journal_db",
     "host": "localhost",
-    "port": 3002,
     "dialect": "mysql"
   },
 
@@ -19,10 +18,11 @@ module.exports = {
   },
   
   "production": {
-    "username": "admin",
-    "password": process.env.TRENT,
-    "database": "journal_db",
-    // "host": "musicdb-g2.cykqhanvgs0f.ap-southeast-2.rds.amazonaws.com",
-    "dialect": "mysql"
+    "username": "cvq1gs247vq7qv74",
+    "password": process.env.HEROKUPASSWORD,
+    "database": "vxah0a6j3m9v5ctv",
+    "host": "wp433upk59nnhpoh.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
+    "dialect": "mysql",
+    "port": "3306"
   }
 }

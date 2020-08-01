@@ -3,12 +3,13 @@ let session = require("express-session"); //Imports express session package
 let passport = require("./config/passport"); //Imports the passport script
 
 const routes = require("./routes");
+const db = require("./models");
 const express = require("express");
 require("dotenv").config();
 const path = require('path');
 const app = express();
 let mysql = require ('mysql');
-let PORT = process.env.PORT || 8080;
+let PORT = process.env.PORT || 3004;
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -25,54 +26,56 @@ app.use(passport.session());
 
 
 // Serve up static assets (usually on heroku)
-if (process.env.NODE_ENV === "production") {
-    app.use(express.static("client/build"));
-  }
+
+app.use(express.static("client/build"));
+  
   
 //Routes
 app.use(routes);
 
 
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "./client/build/index.html"));
+  res.sendFile(path.join(__dirname, "client/build"));
 });
 
 
-let db = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: process.env.SQLPASSWORD,
-  databse: 'journal_db'
-});
+// let db = mysql.createConnection({
+//   host: 'localhost',
+//   user: 'root',
+//   password: process.env.SQLPASSWORD,
+//   databse: 'journal_db'
+// });
 
 //Database Connectn
-db.connect((err) => {
-  if (err){
-    throw err;
-  }
-  console.log("MySql Connected...")
-});
+// db.connect((err) => {
+//   if (err){
+//     throw err;
+//   }
+//   console.log("MySql Connected...")
+// });
 
-//Create DB
-app.get ('/createdb', (req, res) => {
-  let sql = 'CREATE DATABASE journal_db';
-  db.query(sql, (err, result) => {
-    if (err) throw err;
-    res.send('databse created...');
-  });
-});
+// //Create DB
+// app.get ('/createdb', (req, res) => {
+//   let sql = 'CREATE DATABASE journal_db';
+//   db.query(sql, (err, result) => {
+//     if (err) throw err;
+//     res.send('databse created...');
+//   });
+// });
 
-//Create Table
-app.get ('/createjournalstable', (req, res) => {
-  let sql = 'CREATE TABLE journals(id init AUTO_INCREMENT, title VARCHAR(255), body VARCHAR(255), PRIMARY KET (id))';
-db.query(sql, (err, result) => {
-  if (err) throw err;
-  console.log(result);
-  res.send ("Journals table created...")
-});
-})
+// //Create Table
+// app.get ('/createjournalstable', (req, res) => {
+//   let sql = 'CREATE TABLE journals(id init AUTO_INCREMENT, title VARCHAR(255), body VARCHAR(255), PRIMARY KET (id))';
+// db.query(sql, (err, result) => {
+//   if (err) throw err;
+//   console.log(result);
+//   res.send ("Journals table created...")
+// });
+// })
 
 // Syncs models and starts the server to begin listening
+db.sequelize.sync().then(function() {
   app.listen(PORT, function () {
     console.log("App listening on PORT " + PORT);
   });
+})
