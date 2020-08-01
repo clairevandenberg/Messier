@@ -19,14 +19,14 @@ function UsersAccount() {
 
             <Row>   
             <Col size="md-6">
-            <Button className="Userbutton" href="/moodTracker">Start Tracking Your Mood...
+            <Button className="Userbutton" href="/api/moodTracker">Start Tracking Your Mood...
             <FontAwesomeIcon icon={['fa', 'edit']}/>
           
             </Button>
             </Col>
 
             <Col size="md-6 sm-12">
-            <Button className="Userbutton" href="/journal">Start Journaling.
+            <Button className="Userbutton" href="/api/journal">Start Journaling.
             <FontAwesomeIcon icon={['fa', 'chart-line']}/>
             </Button>
             </Col>

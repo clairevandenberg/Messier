@@ -12,20 +12,20 @@ function NavBar() {
         <Nav fill variant="tabs" defaultActiveKey="/login">
         
         <Nav.Item>
-        <Nav.Link className="messier navbar-brand navbar navbar-expand-lg" href="/usersAccount">
+        <Nav.Link className="messier navbar-brand navbar navbar-expand-lg" href="/api/usersAccount">
         MESSIER
         </Nav.Link>
         </Nav.Item>
    
         <Nav.Item>
-        <Nav.Link className=" navbar-brand navbar navbar-expand-lg" href="/journal">
+        <Nav.Link className=" navbar-brand navbar navbar-expand-lg" href="/api/journal">
         Journal
         </Nav.Link>
         </Nav.Item>
 
 
         <Nav.Item>
-        <Nav.Link className=" navbar-brand navbar navbar-expand-lg" href="/moodTracker">
+        <Nav.Link className=" navbar-brand navbar navbar-expand-lg" href="/api/moodTracker">
         Mood
         </Nav.Link>
         </Nav.Item>

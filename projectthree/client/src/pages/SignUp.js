@@ -90,7 +90,7 @@ function SignUp (){
 
                   <Row className="form-group">
                   <Col size="md-12">
-                  <Button className="buttonSubmit" type="submit" href="/usersAccount">
+                  <Button className="buttonSubmit" type="submit" href="/api/usersAccount">
                     Create Account
                   </Button>                  
                   </Col>

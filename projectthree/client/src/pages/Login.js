@@ -51,7 +51,7 @@ function Login (){
 
                   <Row className="form-group">
                   <Col size="md-12">
-                  <Button className="buttonSubmit" type="submit" href="/usersAccount">
+                  <Button className="buttonSubmit" type="submit" href="/api/usersAccount">
                     LOGIN
                   </Button>                  
                   </Col>
@@ -59,7 +59,7 @@ function Login (){
                  </Card.Body>
 
                  <Card.Body>
-                 <Button className="buttonAccont" href="/signUp">Create Account</Button>
+                 <Button className="buttonAccont" href="/api/signUp">Create Account</Button>
                  </Card.Body>
                  
     </form>
