@@ -4,7 +4,8 @@
   "description": "An app that allows you to Journal and track your mood.",
   "main": "server.js",
   "scripts": {
-    "client-install": "cd client && npm install",
+    "install": "cd client && npm install",
+    "build": "cd client && npm run build",
     "start": "node server.js",
     "server": "nodemon server.js",
     "client": "npm start -- prefix client",
