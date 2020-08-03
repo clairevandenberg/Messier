@@ -9,6 +9,7 @@ import Jumbotron from "../components/Jumbotron";
 import "../pages/style.css"
 
 
+
 function Journal () {
     
   // Setting our component's initial state
@@ -41,7 +42,7 @@ function Journal () {
     setFormObject({...formObject, [name]: value})
   };
 
-  // When the form is submitted, use the API.saveJournal method to save the journal data
+  // When the form is submitted, use the API.savedJournal method to save the journal data
   // Then reload journals from the database
   function handleFormSubmit(event) {
     event.preventDefault();
@@ -53,7 +54,7 @@ function Journal () {
         .then(res => loadJournals())
         .catch(err => console.log(err));
     }
-}
+};
   return (
 
     // JOURNAL YOUR THOUGHTS HERE

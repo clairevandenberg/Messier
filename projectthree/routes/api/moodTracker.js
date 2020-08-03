@@ -11,6 +11,7 @@ router.route("/")
 router
   .route("/:id")
   .put(moodTrackerController.update)
-  .delete(moodTrackerController.delete);
+  .delete(moodTrackerController.delete)
+  .find(moodTrackerController.sort);
 
 module.exports = router;

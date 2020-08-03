@@ -14,7 +14,24 @@ export default {
     return axios.delete("/api/journals/" + id);
   },
   // Saves a book to the database
-  saveBook: function(journalData) {
+  saveJournal: function(journalData) {
     return axios.post("/api/journals", journalData);
+  },
+
+  // Gets all moodTrackers
+  getMoodTrackers: function() {
+    return axios.get("/api/moodTracker");
+  },
+  // Gets the book with the given id
+  getMoodTracker: function(id) {
+    return axios.get("/api/moodTracker/" + id);
+  },
+  // Deletes the book with the given id
+  deleteMoodTracker: function(id) {
+    return axios.delete("/api/moodTracker/" + id);
+  },
+  // Saves a book to the database
+  saveMoodTracker: function(moodTrackerData) {
+    return axios.post("/api/moodTracker", moodTrackerData);
   }
 };
