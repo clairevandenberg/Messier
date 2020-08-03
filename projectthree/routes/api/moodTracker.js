@@ -1,16 +1,16 @@
 // const router = require("express").Router();
 const router = require("express").Router();
-const moodTracker = require("../../controllers/moodTracker");
+const moodTrackerController = require("../../controllers/moodTracker");
 
 // Matches with "/api/moodTracker"
 router.route("/")
-  .get(moodTracker.findAll)
-  .post(moodTracker.create);
+  .get(moodTrackerController.findAll)
+  .post(moodTrackerController.create);
 
 // Matches with "/api/moodTracker/:id"
 router
   .route("/:id")
-  .put(moodTracker.update)
-  .delete(moodTracker.delete);
+  .put(moodTrackerController.update)
+  .delete(moodTrackerController.delete);
 
 module.exports = router;

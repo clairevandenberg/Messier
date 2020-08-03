@@ -1,47 +1,39 @@
 import React from 'react';
 import "../../pages/style.css";
-import MoodTracker from '../../pages/MoodTracker';
+import { Chart } from 'react-charts'
+// import { alignAuto } from 'react-charts/dist/react-charts.development';
 
-class Chart extends React.Component {
-    constructor(props) {
-      super(props);
-      this.chartRef = React.createRef();
-    }
-  
-    componentDidUpdate() {
-      this.myChart.data.label = this.props.data.reversed.map(t => t.date);
-      this.myChart.data.datasets[0].data = this.props.reversed.data.map(t => t.value);
-      this.myChart.update();
-    }
-  
-    componentDidMount() {
-      this.myChart = new Chart(this.chartRef.current, {
-    type: 'line',
-    data: {
-      label: ['Red', 'Yellow', 'Green'],
-      datasets: [{
-          label: "Mood Over Time",
-          fill: true,
-          backgroundColor: "#1D84D7",
-          data: [12, 19, 3, 5, 2, 3]
-      }]
-  }
-});
-}
-  
-    render() {
+
+function MyChart() {
+  const data = React.useMemo(
+    () => [
+      {
+        label: 'Series 1',
+        data: [{ x: 1, y: 10}, { x: 2, y: 1 },{ x: 3, y: 5 }, { x: 4, y: 7 }]
+      },
+    ],
+    []
+  )
+ 
+  const axes = React.useMemo(
+    () => [
+      { primary: true, type: 'linear', position: 'bottom' },
+      { type: 'linear', position: 'left' }
+    ],
+    []
+  )
+ 
       return (
-        <div>
-          <MoodTracker 
-          data={this.state.feeds[0].data}
-          title={this.state.feeds[0].title}
-          color="#1D84D7">
+        <div
+           style={{
+        width: '90%',
+        height: '400px'
+      }}>
+        <Chart data={data} axes={axes} />
+
         <button onClick={() => this.changeData()}>Update</button>
-          </MoodTracker>
         </div>
       )
-    }
   }
 
-
-  export default Chart;
+  export default MyChart;

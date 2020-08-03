@@ -1,13 +1,15 @@
 import React from 'react';
 import { render } from 'react-dom';
-import Chart from "../components/MyChart";
-import ReactEchartsCore from 'echarts-for-react/lib/core';
+import MyChart from "../components/MyChart";
+// import ReactEchartsCore from 'echarts-for-react/lib/core';
 import { Container, Row, Col } from "../components/Grid";
 import "./style.css";
 import { Card } from "react-bootstrap";
 import { Input } from "../components/Form";
 import Jumbotron from "../components/Jumbotron";
+import { Chart } from 'react-charts'
 
+// import { Chart } from 'react-charts'
 function MoodTracker (){
 
   let todaysMoods = [];
@@ -145,9 +147,9 @@ todaysMoods.unshift(todaysMood);
  });
 }
 
-document.querySelector("#saveMood-btn").onclick = function() {
- sendTodaysMood(true);
-};
+// document.querySelector("#saveMood-btn").onclick = function() {
+//  sendTodaysMood(true);
+// };
 
   return (
     <Container fluid>
@@ -201,9 +203,8 @@ document.querySelector("#saveMood-btn").onclick = function() {
                 </Row>
           </Card.Body>
           <div className="main chart-wrapper">
-          <ReactEchartsCore
-          Chart={Chart}
-          />
+          <MyChart
+          Chart={Chart} />
           </div>
           <Card.Body>
 

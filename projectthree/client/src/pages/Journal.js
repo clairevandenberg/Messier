@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { Container, Row, Col } from "../components/Grid";
-import { List, ListItem } from "../components/List";
-import { Link } from "react-router-dom";
-import DeleteBtn from "../components/DeleteBtn";
+import { JournalList, JournalListItem } from "../components/List";
+// import { Link } from "react-router-dom";
+// import DeleteBtn from "../components/DeleteBtn";
 import { Input, TextArea, FormBtn } from "../components/Form";
 import API from "../utils/API";
 import Jumbotron from "../components/Jumbotron";
 import "../pages/style.css"
+
 
 function Journal () {
     
@@ -29,11 +30,11 @@ function Journal () {
 };
 
   // Deletes a journal from the database with a given id, then reloads journals from the db
-  function deleteJournal(id) {
-    API.deleteJournal(id)
-      .then(res => loadJournals())
-      .catch(err => console.log(err));
-  }
+  // function deleteJournal(id) {
+  //   API.deleteJournal(id)
+  //     .then(res => loadJournals())
+  //     .catch(err => console.log(err));
+  // }
   // Handles updating component state when the user types into the input field
   function handleInputChange(event) {
     const { name, value } = event.target;
@@ -44,10 +45,10 @@ function Journal () {
   // Then reload journals from the database
   function handleFormSubmit(event) {
     event.preventDefault();
-    if (formObject.title && formObject.journalFeild) {
+    if (formObject.title && formObject.content) {
       API.saveJournal({
         title: formObject.title,
-        journalFeild: formObject.journalFeild
+        content: formObject.content
       })
         .then(res => loadJournals())
         .catch(err => console.log(err));
@@ -70,11 +71,11 @@ function Journal () {
               />
               <TextArea
                 onChange={handleInputChange}
-                name="journalFeild"
+                name="content"
                 placeholder="Journaling Feild"
               />
               <FormBtn
-                disabled={!(formObject.title && formObject.journalFeild)}
+                disabled={!(formObject.title && formObject.content)}
                 onClick={handleFormSubmit}
               >
                 Save
@@ -89,26 +90,25 @@ function Journal () {
               <h1>Saved Journal</h1>
             </Jumbotron>
             {journals.length ? (
-              <List>
-                {journals.map(journal => (
-                  <ListItem key={journal._id}>
-                    <Link to={"/journals/" + journal._id}>
-                      <strong>
-                        {journal.title} by {journal.author}
-                      </strong>
-                    </Link>
-                    <DeleteBtn onClick={() => deleteJournal(journal._id)} />
-                  </ListItem>
-                ))}
-              </List>
-            ) : (
-              <h3>No Journals to Display</h3>
-            )}
-          </Col>
-          </Row>
-      </Container>
- );
-}
+              <h1 className="text-center">No Saved Journals</h1>
+              ) : (
+                <JournalList>
+                  {journals.map(journal => {
+                  return (
+                    <JournalListItem
+                    title={journal.title}
+                    content={journal.content}
+                    />
+                    );
+                  })}
+                </JournalList>
+              )}
+              </Col>
+            </Row>
+          </Container>
+        );
+      }
+                    
 
 
-export default Journal
+export default Journal;

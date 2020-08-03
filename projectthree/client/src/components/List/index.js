@@ -16,3 +16,11 @@ export function ListItem({ children }) {
 }
 
 
+export function JournalList({ children }) {
+  return <ul className="list-group">{children}</ul>;
+}
+
+
+export function JournalListItem({ children }) {
+  return <ul className="list-group">{children}</ul>;
+}
