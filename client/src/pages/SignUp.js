@@ -8,8 +8,8 @@ import Button from 'react-bootstrap/Button'
 
 function SignUp (){
 
-  const [username, setUsername] = useState();
-  const [password, setPassword] = useState();
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -90,7 +90,9 @@ function SignUp (){
 
                   <Row className="form-group">
                   <Col size="md-12">
-                  <Button className="buttonSubmit" type="submit" href="/api/usersAccount">
+                  <Button className="buttonSubmit" type="submit" href="/api/usersAccount" 
+                  // onClick={() => authenticated ? auth.logout() : auth.login()}
+                  >
                     Create Account
                   </Button>                  
                   </Col>

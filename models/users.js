@@ -4,6 +4,14 @@ let passport = require("../config/passport.js");
 
 module.exports = function(sequelize, DataTypes) {
     const Users = sequelize.define("users", {
+        
+        user_id: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            primaryKey: true,
+            autoIncrement: true
+        },
+        
         firstName: {
             type: DataTypes.STRING,
         allowNull: false
@@ -35,6 +43,7 @@ module.exports = function(sequelize, DataTypes) {
     Users.addHook("beforeCreate", function(users) {
     users.password = bcrypt.hashSync(users.password, bcrypt.genSaltSync(10), null);
     });
+
 
     return Users;
 }

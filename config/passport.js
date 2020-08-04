@@ -4,9 +4,12 @@ let db = require("../models");//import databases
 
 passport.use(new LocalStrategy(//new instance of a passport strategy
     {
-        usernameField: "email" //configured to use username
+        usernameField: "email", //configured to use username
+        passwordField: "password"
+
     },
     function (usr, password, done) { //when signing in this code runs
+        console.log("login checking for user")
         db.users.findOne({
             where: {
                 email: usr//finds user in database
