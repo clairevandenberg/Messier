@@ -7,5 +7,3 @@ module.exports = function(sequelize, DataTypes) {
 
 return MoodTracker;
 };
-
-module.exports = MoodTracker;

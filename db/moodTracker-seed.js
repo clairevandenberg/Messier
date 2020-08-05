@@ -1,4 +1,5 @@
 'use strict';
+const db = require("../models");
 
 module.exports = {
   up: (queryInterface, Sequelize) => {

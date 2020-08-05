@@ -10,7 +10,7 @@ import { Input, FormBtn } from "../components/Form";
 
 function MoodTracker (){
   // Setting our component's initial state
-  const [moodTrackers, setMoodTracker] = useState([])
+  const [moodTracker, setMoodTracker] = useState([])
   const [formObject, setFormObject] = useState({})
 
   // Load all MoodTracker and store them with setMoodTracker
