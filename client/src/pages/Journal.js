@@ -10,7 +10,7 @@ import "../pages/style.css"
 
 
 function Journals () {
-    
+
   // Setting our component's initial state
   const [journals, setJournals] = useState ([])
   const [formObject, setFormObject] = useState({
