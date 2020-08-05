@@ -10,6 +10,7 @@ router.route("/")
 // Matches with "/api/journal/:id"
 router
   .route("/:id")
+  .get(journalController.findAll)
   .put(journalController.update)
   .delete(journalController.delete);
 

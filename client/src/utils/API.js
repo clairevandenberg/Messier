@@ -33,5 +33,33 @@ export default {
   // Saves a book to the database
   saveMoodTracker: function(moodTrackerData) {
     return axios.post("/api/moodTracker", moodTrackerData);
-  }
+  },
+
+
+ login: function (user) {
+    return axios.post('/auth/local', { email: user.email, password: user.password })
+  },
+
+   // / Gets all users
+  getUsers: function() {
+    return axios.get('/api/users/all');
+  },
+  
+  // Saves a book to the database
+   updateUser: function(userData) {
+    return axios.put("/api/users", userData);
+  }, 
+  
+  // Updates a book to the database
+  updatePassword: function(userData) {
+    return axios.put("/api/users", userData);
+  }, 
+
+  // Updates a book to the database
+  addUser: function(userData) {
+    return axios.post("/api/users", userData);
+  }, 
+   
+
+  
 };

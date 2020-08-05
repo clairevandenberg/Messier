@@ -5,18 +5,28 @@ import { Card } from "react-bootstrap";
 import Jumbotron from "../components/Jumbotron";
 import Button from 'react-bootstrap/Button'
 
+  export default function SignUp() {
+    
+    const [firstName, setFirstName] = useState("");
+    const [lastName, setLastName] = useState("");
+    const [dob, setDob] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+  
+    function validateForm() {
+      return email.length > 5 && password.length > 5;
+     
+    };
+  
+    function handleSubmit(event) {
+      event.preventDefault();
+      console.log("email is " + email);
+      console.log("password is " + password);
+      console.log("name is " + firstName + lastName);
+      console.log("Date of birth is " + dob);
 
-function SignUp (){
-
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-
-  const handleSubmit = e => {
-    e.preventDefault();
-    console.log("username is " + username);
-    console.log("password is " + password);
-  };
-
+      console.log("You have successfully signed in")
+      }
 
   return (
     <Container fluid>
@@ -34,6 +44,8 @@ function SignUp (){
                   name="firstName" 
                   id="examplefirstName" 
                   placeholder="First Name" 
+                  onChange={e => setFirstName(e.target.value)} 
+
                   />
                 </Col>
 
@@ -44,6 +56,8 @@ function SignUp (){
                   name="lastName" 
                   id="examplelastName" 
                   placeholder="Last Name" 
+                  onChange={e => setLastName(e.target.value)} 
+
                   />
                 </Col>
                 </Row>
@@ -55,7 +69,9 @@ function SignUp (){
                   type="dob"
                   name="dob" 
                   id="exampledob" 
-                  placeholder="Date of Birth"  
+                  placeholder="Date of Birth" 
+                  onChange={e => setDob(e.target.value)} 
+
                   />
                   </Col>
                   </Row>
@@ -69,7 +85,7 @@ function SignUp (){
                   name="email" 
                   id="exampleemail" 
                   placeholder="Email" 
-                  onChange={e => setUsername(e.target.value)} 
+                  onChange={e => setEmail(e.target.value)} 
                   />
                   </Col>
                   </Row>
@@ -90,9 +106,8 @@ function SignUp (){
 
                   <Row className="form-group">
                   <Col size="md-12">
-                  <Button className="buttonSubmit" type="submit" href="/api/usersAccount" 
-                  // onClick={() => authenticated ? auth.logout() : auth.login()}
-                  >
+                  <Button className="buttonSubmit" disabled={!validateForm()} type="submit">
+                  {/* // onClick={() => authenticated ? auth.logout() : auth.login()} */}
                     Create Account
                   </Button>                  
                   </Col>
@@ -105,4 +120,3 @@ function SignUp (){
       
       );
     }
-export default SignUp;

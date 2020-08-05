@@ -1,20 +1,22 @@
 import React, { useState, useEffect } from "react";
 import { Container, Row, Col } from "../components/Grid";
 import { JournalList, JournalListItem } from "../components/List";
-// import { Link } from "react-router-dom";
-// import DeleteBtn from "../components/DeleteBtn";
+import { Link } from "react-router-dom";
+import DeleteBtn from "../components/DeleteBtn";
 import { Input, TextArea, FormBtn } from "../components/Form";
 import API from "../utils/API";
 import Jumbotron from "../components/Jumbotron";
 import "../pages/style.css"
 
 
-
-function Journal () {
+function Journals () {
     
   // Setting our component's initial state
   const [journals, setJournals] = useState ([])
-  const [formObject, setFormObject] = useState([])
+  const [formObject, setFormObject] = useState({
+    title: "",
+    content: ""
+    })
 
     // Load all journals and store them with setjournals
     useEffect(() => {
@@ -28,18 +30,22 @@ function Journal () {
       setJournals(res.data)
     )
     .catch(err => console.log(err));
+    console.log("getting journals");
 };
 
   // Deletes a journal from the database with a given id, then reloads journals from the db
-  // function deleteJournal(id) {
-  //   API.deleteJournal(id)
-  //     .then(res => loadJournals())
-  //     .catch(err => console.log(err));
-  // }
+  function deleteJournal(id) {
+    API.deleteJournal(id)
+      .then(res => loadJournals())
+      .catch(err => console.log(err));
+      console.log("DELETE journals");
+
+  }
   // Handles updating component state when the user types into the input field
   function handleInputChange(event) {
-    const { name, value } = event.target;
-    setFormObject({...formObject, [name]: value})
+    const { value } = event.target;
+    console.log("UPDATING journals");
+    setFormObject (value);
   };
 
   // When the form is submitted, use the API.savedJournal method to save the journal data
@@ -51,8 +57,13 @@ function Journal () {
         title: formObject.title,
         content: formObject.content
       })
-        .then(res => loadJournals())
+        .then(res => setFormObject({
+          title: "",
+          content: ""
+        }))
         .catch(err => console.log(err));
+        console.log("FORM SUBMIT journals");
+
     }
 };
   return (
@@ -69,11 +80,14 @@ function Journal () {
                 onChange={handleInputChange}
                 name="title"
                 placeholder="Journal Title (required)"
+                value={formObject.title}
               />
               <TextArea
                 onChange={handleInputChange}
                 name="content"
                 placeholder="Journaling Feild"
+                value={formObject.content}
+
               />
               <FormBtn
                 disabled={!(formObject.title && formObject.content)}
@@ -90,20 +104,28 @@ function Journal () {
           <Jumbotron>
               <h1>Saved Journal</h1>
             </Jumbotron>
+
             {journals.length ? (
-              <h1 className="text-center">No Saved Journals</h1>
-              ) : (
                 <JournalList>
                   {journals.map(journal => {
-                  return (
-                    <JournalListItem
-                    title={journal.title}
-                    content={journal.content}
-                    />
-                    );
-                  })}
+                    return (
+                    <JournalListItem key={journal._id}>
+                     
+                     <Link to={"/journal/" + journal._id}>
+                       <strong>
+                         {journal.title} by {journal.content}
+                       </strong>
+                     </Link>
+
+                     <DeleteBtn onClick={() => deleteJournal(journal._id)} />
+                   </JournalListItem>
+                  );
+                })}
                 </JournalList>
-              )}
+            ): (
+            <h1 className="text-center">No Saved Journals</h1>
+            )}
+
               </Col>
             </Row>
           </Container>
@@ -111,5 +133,4 @@ function Journal () {
       }
                     
 
-
-export default Journal;
+export default Journals;

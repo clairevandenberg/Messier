@@ -1,22 +1,40 @@
-import React, { useState, } from "react";
+import React, { useState } from "react";
 import { Container, Row, Col } from "../components/Grid";
 import "./style.css";
 import { Card } from "react-bootstrap";
 import { Input } from "../components/Form";
 import Jumbotron from "../components/Jumbotron";
-import Button from 'react-bootstrap/Button'
+import Button from 'react-bootstrap/Button';
+// import { isAuthenticated } from "../../../isAuthenticated";
+// import { Redirect } from 'react-router-dom';
 
-function Login (){
+export default function Login() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  
 
-  const [username] = useState();
-  const [password] = useState();
-
-  const handleSubmit = e => {
-    e.preventDefault();
-    console.log("username is " + username);
-    console.log("password is " + password);
+  function validateForm() {
+    return email.length > 5 && password.length > 5;
+   
   };
 
+  function handleSubmit(event) {
+    event.preventDefault();
+    console.log("email is " + email);
+    console.log("password is " + password);
+    console.log("You have successfully signed in")
+    }
+
+    // Login.propTypes = {
+    //   onChange: PropTypes.function.isRequired,
+    //   errorMessage: PropTypes.string
+
+    //   }
+  // redirect to users account. 
+  // if (isAuthenticated) {
+  //   return <Redirect to='/usersAccount' />
+  // }
+ 
 
   return (
     <Container fluid>
@@ -31,9 +49,11 @@ function Login (){
                   <Input 
                   className="form-control"
                   type="email" 
-                  name="email" 
+                  value={email} 
                   id="exampleemail" 
                   placeholder="Email" 
+                  onChange={e => setEmail(e.target.value)}
+
                   />
                 </Col>
                 </Row>
@@ -42,16 +62,18 @@ function Login (){
                 <Col size="md-12">
                   <Input 
                   type="password" 
-                  name="password" 
+                  value={password}
                   id="examplePassword" 
                   placeholder="Password" 
+                  onChange={e => setPassword(e.target.value)}
+
                   />
                   </Col>
                   </Row> 
 
                   <Row className="form-group">
                   <Col size="md-12">
-                  <Button className="buttonSubmit" type="submit" href="/api/usersAccount">
+                  <Button className="buttonSubmit" disabled={!validateForm()} type="submit">
                     LOGIN
                   </Button>                  
                   </Col>
@@ -64,8 +86,5 @@ function Login (){
                  
     </form>
   </Container>         
-       
-    );
-  }
-  
-  export default Login;
+  )
+  };

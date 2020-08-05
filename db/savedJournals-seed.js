@@ -1,4 +1,5 @@
 'use strict';
+const db = require("../models");
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
@@ -20,4 +21,18 @@ module.exports = {
             updatedAt: new Date()
     }]);
   },
+
+
 };
+
+db.Journal
+  .remove({})
+  .then(() => db.Journal.collection.insertMany(savedJournals-seed))
+  .then(data => {
+    console.log(data.result.n + " records inserted!");
+    process.exit(0);
+  })
+  .catch(err => {
+    console.error(err);
+    process.exit(1);
+  });

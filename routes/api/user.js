@@ -9,6 +9,7 @@ router.route("/")
 
 // Matches with "/api/users/:id"
 router
+  .get(userController.findAll)
   .route("/:id")
   .put(userController.update)
 

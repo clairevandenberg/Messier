@@ -10,6 +10,7 @@ router.route("/")
 // Matches with "/api/moodTracker/:id"
 router
   .route("/:id")
+  .get(moodTrackerController.findAll)
   .put(moodTrackerController.update)
   .delete(moodTrackerController.delete)
   // .find(moodTrackerController.sort);

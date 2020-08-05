@@ -5,10 +5,8 @@ import "./style.css";
 import { Card } from "react-bootstrap";
 import Jumbotron from "../components/Jumbotron";
 import { Chart } from 'react-charts'
-import Button from 'react-bootstrap/Button'
 import API from "../utils/API";
 import { Input, FormBtn } from "../components/Form";
-
 
 function MoodTracker (){
   // Setting our component's initial state
@@ -47,7 +45,9 @@ function MoodTracker (){
         .then(res => loadMoodTracker())
         .catch(err => console.log(err));
     }
+    console.log('saveMoodTracker');
 };
+
 
   return (
     <Container fluid>
@@ -68,7 +68,7 @@ function MoodTracker (){
                   name="moodRate" 
                   id="moodRate" 
                   placeholder="10" 
-                  />
+                  />                  
                 </Col>
                 </Row>
      
@@ -88,7 +88,7 @@ function MoodTracker (){
 
                 <Row className="form-group">
                   <Col size="md-12">
-                  <FormBtn onClick={handleFormSubmit}>Save</FormBtn>                
+                  <FormBtn onClick={handleFormSubmit}>Save and Update Graph</FormBtn>                
                   </Col>
                   </Row> 
                 </form>
@@ -106,7 +106,7 @@ function MoodTracker (){
           </Col>
         </Card>
       </Container>
-          
+     
     );
   }
   
