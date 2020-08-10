@@ -1,10 +1,10 @@
-CREATE DATABASE journal_db;
+CREATE DATABASE moodJournal_db;
 
-USE journal_db;
+USE moodJournal_db;
 
-CREATE TABLE journal (
+CREATE TABLE moodJournal (
 id INTEGER PRIMARY KEY,
-savedJournals VARCHAR(255),
+journal VARCHAR(255),
 moodTracker VARCHAR(255),
 users  VARCHAR(255),
 );

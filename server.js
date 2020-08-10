@@ -26,7 +26,10 @@ app.use(passport.session());
 app.use(express.static("client/build"));
   
 //Routes
-app.use(routes);
+app.use("/api/journal", routes);
+app.use("/api/moodTracker", routes);
+app.use("/api/user", routes);
+
 
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "client/build"));

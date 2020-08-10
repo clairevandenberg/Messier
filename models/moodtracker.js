@@ -1,9 +1,9 @@
 module.exports = function(sequelize, DataTypes) {
-    const MoodTracker = sequelize.define("MoodTracker", {
+    const moodTracker = sequelize.define("moodTracker", {
         why: DataTypes.BOOLEAN,
         moodRate: DataTypes.BOOLEAN,
         date: DataTypes.BOOLEAN
 });
 
-return MoodTracker;
+return moodTracker;
 };

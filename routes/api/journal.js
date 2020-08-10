@@ -3,7 +3,7 @@ const router = require("express").Router();
 const journalController = require("../../controllers/journal");
 
 // Matches with "/api/journal"
-router.route("/")
+router.route("/api/journal")
   .get(journalController.findAll)
   .post(journalController.create);
 

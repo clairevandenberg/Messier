@@ -1,9 +1,10 @@
-// const router = require("express").Router();
-const router = require("express").Router();
+const express = require("express");
+const router = express.Router();
+
 const moodTrackerController = require("../../controllers/moodTracker");
 
 // Matches with "/api/moodTracker"
-router.route("/")
+router.route("/api/moodTracker")
   .get(moodTrackerController.findAll)
   .post(moodTrackerController.create);
 

@@ -3,19 +3,19 @@ import axios from "axios";
 export default {
   // Gets all journals
   getJournals: function() {
-    return axios.get("/api/journals");
+    return axios.get("/api/journal");
   },
   // Gets the book with the given id
   getJournal: function(id) {
-    return axios.get("/api/journals/" + id);
+    return axios.get("/api/journal/" + id);
   },
   // Deletes the book with the given id
   deleteJournal: function(id) {
-    return axios.delete("/api/journals/" + id);
+    return axios.delete("/api/journal/" + id);
   },
   // Saves a book to the database
   saveJournal: function(journalData) {
-    return axios.post("/api/journals", journalData);
+    return axios.post("/api/journal", journalData);
   },
 
   // Gets all moodTrackers
