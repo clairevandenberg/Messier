@@ -10,9 +10,13 @@ import { Input, FormBtn } from "../components/Form";
 
 function MoodTracker (){
 
-  
-};
+function handleInputChange() {
 
+}
+
+function handleFormSubmit() {
+
+}
 
   return (
     <Container fluid>
