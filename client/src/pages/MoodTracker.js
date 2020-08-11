@@ -9,43 +9,8 @@ import API from "../utils/API";
 import { Input, FormBtn } from "../components/Form";
 
 function MoodTracker (){
-  // Setting our component's initial state
-  const [moodTracker, setMoodTracker] = useState([])
-  const [formObject, setFormObject] = useState({})
 
-  // Load all MoodTracker and store them with setMoodTracker
-  useEffect(() => {
-    loadMoodTracker()
-  }, [])
-
-  // Loads all MoodTracker and sets them to MoodTracker
-  function loadMoodTracker() {
-    API.getMoodTracker()
-      .then(res => 
-        setMoodTracker(res.data)
-      )
-      .catch(err => console.log(err));
-  };
-
-  // Handles updating component state when the user types into the input field
-  function handleInputChange(event) {
-    const { moodRate, didToday } = event.target;
-    setFormObject({...formObject, [moodRate]: didToday})
-  };
-
-  // When the form is submitted, use the API.saveMoodTracker method to save the moodTracker data
-  // Then reload MoodTracker from the database
-  function handleFormSubmit(event) {
-    event.preventDefault();
-    if (formObject.moodRate && formObject.didToday) {
-      API.saveMoodTracker({
-        moodRate: formObject.moodRate,
-        didToday: formObject.didToday
-      })
-        .then(res => loadMoodTracker())
-        .catch(err => console.log(err));
-    }
-    console.log('saveMoodTracker');
+  
 };
 
 
