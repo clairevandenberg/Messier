@@ -40,12 +40,11 @@ mongoose.connect("mongodb://localhost/moodJournal", {
 });
 
 //Routes
-
 app.use(require("./routes/api/journal"));
 app.use(require("./routes/api/moodTracker"));
 
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "client/build"));
+  res.sendFile(path.join(__dirname, "client/build/index.html"));
 });
 
 

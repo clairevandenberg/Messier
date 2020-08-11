@@ -1,71 +1,45 @@
-import React, { useState, useEffect } from "react";
+import React, { useRef, useReducer} from "react";
 import { Container, Row, Col } from "../components/Grid";
 import { JournalList, JournalListItem } from "../components/List";
-import { Link } from "react-router-dom";
-import DeleteBtn from "../components/DeleteBtn";
-import { Input, TextArea, FormBtn } from "../components/Form";
-import API from "../utils/API";
 import Jumbotron from "../components/Jumbotron";
 import "../pages/style.css"
 
 
 function Journal () {
+  const inputRef = useRef();
+  const [journals, dispatch] = useReducer((state, action) => {
+    switch (action.type) {
+    case "add":
+      return [
+        ...state,
+        {
+          id: state.length * Math.random(),
+          title: action.title,
+          content: action.content
+        }
+      ];
+      // Bonus: Remove a todo from the list.
+    case "remove":
+      return state.filter((_, index) => {
+        return index !== action.index;
+      });
+    default:
+      return state;
+    }
+  }, []);
 
-  // Setting our component's initial state
-  const [journal, setJournal] = useState ([])
-  const [formObject, setFormObject] = useState({
-    title: "",
-    content: ""
-    })
+  const handleSubmit = e => {
+    e.preventDefault();
+    dispatch({
+      type: "add",
+      title: inputRef.current.value,
+      content: inputRef.current.value
 
-    // Load all journal and store them with setjournal
-    useEffect(() => {
-      loadJournal()
-    }, [])
-  
- // Loads all journal and sets them to journal
- function loadJournal() {
-  API.getJournal()
-    .then(res => 
-      setJournal(res.data)
-    )
-    .catch(err => console.log(err));
-    console.log("getting journal");
-};
-
-  // Deletes a journal from the database with a given id, then reloads journal from the db
-  function deleteJournal(id) {
-    API.deleteJournal(id)
-      .then(res => loadJournal())
-      .catch(err => console.log(err));
-      console.log("DELETE journal");
-
-  }
-  // Handles updating component state when the user types into the input field
-  function handleInputChange(event) {
-    const { value } = event.target;
-    console.log("UPDATING journal");
-    setFormObject (value);
+    });
+    inputRef.current.value = "";
   };
 
-  // When the form is submitted, use the API.savedJournal method to save the journal data
-  // Then reload journal from the database
-  function handleFormSubmit(event) {
-    event.preventDefault();
-    if (formObject.title && formObject.content) {
-      API.saveJournal({
-        title: formObject.title,
-        content: formObject.content
-      })
-        .then(res => setFormObject({
-          title: "",
-          content: ""
-        }))
-        .catch(err => console.log(err));
-        console.log("FORM SUBMIT journal");
 
-    }
-};
   return (
 
     // JOURNAL YOUR THOUGHTS HERE
@@ -75,26 +49,21 @@ function Journal () {
             <Jumbotron>
               <h1>Whats on your mind..?</h1>
             </Jumbotron>
-            <form>
-              <Input
-                onChange={handleInputChange}
-                name="title"
+            <form onSubmit={handleSubmit}>
+              <input
+                className= "form-control"
+                ref={inputRef}
                 placeholder="Journal Title (required)"
-                value={formObject.title}
               />
-              <TextArea
-                onChange={handleInputChange}
-                name="content"
+              <input
+                className= "form-control"
+                ref={inputRef}
                 placeholder="Journaling Feild"
-                value={formObject.content}
 
               />
-              <FormBtn
-                disabled={!(formObject.title && formObject.content)}
-                onClick={handleFormSubmit}
-              >
-                Save
-              </FormBtn>
+              <button className="btn btn-success mt-3 mb-5" type="submit">
+          Save Journal
+        </button>
             </form>
           </Col>
 
@@ -105,26 +74,26 @@ function Journal () {
               <h1>Saved Journal</h1>
             </Jumbotron>
 
-            {journal.length ? (
+            
                 <JournalList>
-                  {journal.map(journal => {
-                    return (
-                    <JournalListItem key={journal._id}>
-                     
-                     <Link to={"/journal/" + journal._id}>
-                       <strong>
-                         {journal.title} by {journal.content}
-                       </strong>
-                     </Link>
+                {journals.map((journal, index) => {
+                    return (                    
+                    <JournalListItem key={journal.id}>
+                      {journal.title}{journal.content}
 
-                     <DeleteBtn onClick={() => deleteJournal(journal._id)} />
+
+                         <button
+                          className="btn btn-success mt-3 mb-5"
+                          onClick={() => dispatch({ type: "remove", index })}
+                        >
+                          Delete Journal
+                        </button>
+
                    </JournalListItem>
-                  );
+                    )
                 })}
                 </JournalList>
-            ): (
-            <h1 className="text-center">No Saved Journals</h1>
-            )}
+            
 
               </Col>
             </Row>
