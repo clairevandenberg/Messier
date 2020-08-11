@@ -15,10 +15,10 @@ function App() {
         <Nav />
         
           <Route exact path="/" component={Login} />
-          <Route exact path="/api/journal" component={Journal} />
-          <Route exact path="/api/moodTracker" component={MoodTracker} />
-          <Route exact path="/api/usersAccount" component={UsersAccount} />
-          <Route exact path="/api/signUp" component={SignUp} />
+          <Route exact path="/journal" component={Journal} />
+          <Route exact path="/moodTracker" component={MoodTracker} />
+          <Route exact path="/usersAccount" component={UsersAccount} />
+          <Route exact path="/signUp" component={SignUp} />
 
         
         <Footer />

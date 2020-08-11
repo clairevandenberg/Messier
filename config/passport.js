@@ -1,6 +1,6 @@
 let passport = require("passport");//imports passport
 let LocalStrategy = require("passport-local").Strategy;//assigns a authentication 'strategy' to this class variable
-let db = require("../models");//import databases
+let db = require("../models/users");//import databases
 
 passport.use(new LocalStrategy(//new instance of a passport strategy
     {

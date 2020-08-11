@@ -1,13 +1,14 @@
 //Dependencies
 let session = require("express-session"); //Imports express session package
 let passport = require("./config/passport"); //Imports the passport script
+
 const routes = require("./routes");
-const db = require("./models");
 const express = require("express");
 require("dotenv").config();
+
 const path = require('path');
 const app = express();
-let mysql = require ('mysql');
+const mongoose = require("mongoose");
 let PORT = process.env.PORT || 3004;
 
 // view engine setup
@@ -23,21 +24,32 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // Serve up static assets (usually on heroku)
-app.use(express.static("client/build"));
-  
-//Routes
-app.use("/api/journal", routes);
-app.use("/api/moodTracker", routes);
-app.use("/api/user", routes);
+  app.use(express.static("client/build"));
 
+
+//Connect Mongo DB
+mongoose.connect("mongodb://localhost/moodJournal", {
+  useCreateIndex: true,
+  useNewUrlParser: true,
+  useFindAndModify: false,
+  useUnifiedTopology: true
+}).then(() => {
+  console.log("conected to mongodb");
+}).catch(error => {
+  console.log("mongo error", error);
+});
+
+//Routes
+
+app.use(require("./routes/api/journal"));
+app.use(require("./routes/api/moodTracker"));
 
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "client/build"));
 });
 
+
 // Syncs models and starts the server to begin listening
-db.sequelize.sync().then(function() {
   app.listen(PORT, function () {
     console.log("App listening on PORT " + PORT);
   });
-})

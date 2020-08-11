@@ -1,9 +1,26 @@
 // Creates a "Journal" model that matches up with DB
-module.exports = function(sequelize, DataTypes) {
-    const journal = sequelize.define("journal", {
-        title: { type: String, required: true },
-        content: { type: String, required: true }
-    });
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
-    return journal;
-}
+const journalSchema = new Schema(
+    {
+        title: {
+          type: String,
+          trim: true,
+          required: "Enter Your Journal Title"
+        },
+        content: {
+          type: String,
+          required: "Journal your thoughts here"
+        },
+        date: {
+          type: Date,
+          default: Date.now
+        }
+      }
+);
+
+
+const Journal = mongoose.model(`Journal`, journalSchema);
+
+module.exports = Journal;

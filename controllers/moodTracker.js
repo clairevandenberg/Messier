@@ -1,37 +1,44 @@
-const db = require("../models");
+
+var express = require("express");
+var router = express.Router();
+const MoodTracker = require ('../models/moodTracker')
+
+const MoodTrackerController = {};
+
+//GET
+MoodTrackerController.getMoodTracker = async (req, res) => {
+    try {
+        const moodTracker = await MoodTracker.find();
+        res.json({ moodTracker })
+    } catch (error) {
+        console.log(error)
+    }
+}
 
 
-module.exports = {
-  findAll: function(req, res) {
-    db.moodTracker
-      .findAll(req.query)
-      .sort({ date: -1 })
-      .then(dbmoodTracker => res.json(dbmoodTracker))
-      .catch(err => res.status(422).json(err));
-  },
-  findById: function(req, res) {
-    db.moodTracker
-      .findById(req.params.id)
-      .then(dbmoodTracker => res.json(dbmoodTracker))
-      .catch(err => res.status(422).json(err));
-  },
-  create: function(req, res) {
-    db.moodTracker
-      .create(req.body)
-      .then(dbmoodTracker => res.json(dbmoodTracker))
-      .catch(err => res.status(422).json(err));
-  },
-  update: function(req, res) {
-    db.moodTracker
-      .findOneAndUpdate({ _id: req.params.id }, req.body)
-      .then(dbmoodTracker => res.json(dbmoodTracker))
-      .catch(err => res.status(422).json(err));
-  },
-  delete: function(req, res) {
-    db.moodTracker
-      .findById({ _id: req.params.id })
-      .then(dbmoodTracker => dbmoodTracker.delete())
-      .then(dbmoodTracker => res.json(dbmoodTracker))
-      .catch(err => res.status(422).json(err));
-  }
-};
+// CREATE
+MoodTrackerController.createMoodTracker = async (req, res) => {
+  const { moodRate, didToday } = req.body;
+  const newMoodTracker = new MoodTracker({
+    moodRate: moodRate,
+      didToday: didToday,
+    
+  });
+  await newMoodTracker.save();
+  res.json({ newMoodTracker });
+}
+
+// DELETE
+MoodTrackerController.deleteMoodTracker = async (req, res) => {
+  await MoodTracker.findByIdAndDelete(req.params.id);
+  res.json('MoodTracker Deleted');
+}
+
+//UPDATE
+MoodTrackerController.updateMoodTracker = async (req, res) => {
+  await MoodTracker.findByIdAndUpdate(req.params.id, req.body);
+  console.log(req.params.id, req.body)
+  res.json('MoodTracker Updated');
+}
+
+module.exports = MoodTrackerController;

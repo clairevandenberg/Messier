@@ -9,47 +9,47 @@ import Jumbotron from "../components/Jumbotron";
 import "../pages/style.css"
 
 
-function Journals () {
+function Journal () {
 
   // Setting our component's initial state
-  const [journals, setJournals] = useState ([])
+  const [journal, setJournal] = useState ([])
   const [formObject, setFormObject] = useState({
     title: "",
     content: ""
     })
 
-    // Load all journals and store them with setjournals
+    // Load all journal and store them with setjournal
     useEffect(() => {
-      loadJournals()
+      loadJournal()
     }, [])
   
- // Loads all journals and sets them to journals
- function loadJournals() {
-  API.getJournals()
+ // Loads all journal and sets them to journal
+ function loadJournal() {
+  API.getJournal()
     .then(res => 
-      setJournals(res.data)
+      setJournal(res.data)
     )
     .catch(err => console.log(err));
-    console.log("getting journals");
+    console.log("getting journal");
 };
 
-  // Deletes a journal from the database with a given id, then reloads journals from the db
+  // Deletes a journal from the database with a given id, then reloads journal from the db
   function deleteJournal(id) {
     API.deleteJournal(id)
-      .then(res => loadJournals())
+      .then(res => loadJournal())
       .catch(err => console.log(err));
-      console.log("DELETE journals");
+      console.log("DELETE journal");
 
   }
   // Handles updating component state when the user types into the input field
   function handleInputChange(event) {
     const { value } = event.target;
-    console.log("UPDATING journals");
+    console.log("UPDATING journal");
     setFormObject (value);
   };
 
   // When the form is submitted, use the API.savedJournal method to save the journal data
-  // Then reload journals from the database
+  // Then reload journal from the database
   function handleFormSubmit(event) {
     event.preventDefault();
     if (formObject.title && formObject.content) {
@@ -62,7 +62,7 @@ function Journals () {
           content: ""
         }))
         .catch(err => console.log(err));
-        console.log("FORM SUBMIT journals");
+        console.log("FORM SUBMIT journal");
 
     }
 };
@@ -105,9 +105,9 @@ function Journals () {
               <h1>Saved Journal</h1>
             </Jumbotron>
 
-            {journals.length ? (
+            {journal.length ? (
                 <JournalList>
-                  {journals.map(journal => {
+                  {journal.map(journal => {
                     return (
                     <JournalListItem key={journal._id}>
                      
@@ -133,4 +133,4 @@ function Journals () {
       }
                     
 
-export default Journals;
+export default Journal;

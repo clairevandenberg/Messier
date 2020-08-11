@@ -1,17 +1,19 @@
-// const router = require("express").Router();
-const router = require("express").Router();
-const journalController = require("../../controllers/journal");
+const { Router } = require('express');
+const router = Router();
+
+
+const { getJournal, createJournal, updateJournal, deleteJournal } = require("../../controllers/journal");
 
 // Matches with "/api/journal"
 router.route("/api/journal")
-  .get(journalController.findAll)
-  .post(journalController.create);
+  .get(getJournal)
+  .post(createJournal);
 
 // Matches with "/api/journal/:id"
 router
-  .route("/:id")
-  .get(journalController.findAll)
-  .put(journalController.update)
-  .delete(journalController.delete);
+  .route('/api/journal/:id')
+  .put(updateJournal)
+  .delete(deleteJournal);
 
 module.exports = router;
+

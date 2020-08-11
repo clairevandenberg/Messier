@@ -1,10 +1,24 @@
-'use strict';
-const db = require("../models");
+require('dotenv').config();
 
-module.exports = {
-  up: (queryInterface, Sequelize) => {
+var Journal = require('../models/journal');
 
-    return queryInterface.bulkInsert('users', [{
+const mongoose = require("mongoose");
+
+const URI =  process.env.MONGODB_URI ? 'process.env.MONGODB_URI' : 'mongodb://localhost/Emarket'
+mongoose.connect(URI, {
+  useCreateIndex : true,
+    useNewUrlParser: true, 
+    useFindAndModify: false,
+    useUnifiedTopology: true,
+}).then(()=>{
+  console.log("conected to mongodb");
+}).catch(error => {
+  console.log("mongo error",error);
+})
+
+
+const journal = [
+  new Journal({
         title: 'Beach Day',
         content: 'Today i went to the beach and had a great day',
         createdAt: new Date(),
@@ -19,8 +33,18 @@ module.exports = {
             content: 'Today rained and it was depressing but I made hot chocolate and watched movies which made me happy and relaxed',
             createdAt: new Date(),
             updatedAt: new Date()
-    }]);
-  },
-
-
-};
+          }),
+        ];
+        
+        let done = 0;
+        for (var i = 0; i < users.length; i++) {
+            users[i].save(function (err, result) {
+                done++;
+                if (done === users.length) {
+                    exit();
+                }
+            });
+        }
+            function exit() {
+            mongoose.disconnect();
+        }

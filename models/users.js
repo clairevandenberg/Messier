@@ -1,49 +1,58 @@
-var bcrypt = require("bcryptjs");
-let passport = require("../config/passport.js");
 
+// Creates a "users" model that matches up with DB
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
-module.exports = function(sequelize, DataTypes) {
-    const Users = sequelize.define("users", {
-        
-        user_id: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            primaryKey: true,
-            autoIncrement: true
+const userSchema = new Schema({
+    
+        name: {
+          type: String,
+          trim: true,
+          required: true,
         },
-        
-        firstName: {
-            type: DataTypes.STRING,
-        allowNull: false
-        },
-
         lastName: {
-            type: DataTypes.STRING,
-        allowNull: false
+          type: Number,
+          trim: true,
+          required: true,
         },
         dob: {
-            type: DataTypes.STRING,
-        allowNull: false
+            type: Number,
+            required: true,
         },
-        email: {
-            type: DataTypes.STRING,
-        allowNull: false
-        },
+          email: {
+            type: Number,
+            required: true,
+            unique: true
 
-        password: {
-            type: DataTypes.STRING,
-        allowNull: false
+          },
+          password: {
+            type: Number,
+            required: true,
+        },
+        date: {
+          type: Date,
+          default: Date.now
         }
-    })
+      }
+);
 
-    Users.prototype.validPassword = function(password) {
-    return bcrypt.compareSync(password, this.password);
-};
-// before a User is created, their password will be automatically hash their password
-    Users.addHook("beforeCreate", function(users) {
-    users.password = bcrypt.hashSync(users.password, bcrypt.genSaltSync(10), null);
-    });
+const User = mongoose.model('User',userSchema); 
+
+module.exports = User;
 
 
-    return Users;
-}
+
+// var bcrypt = require("bcryptjs");
+// let passport = require("../config/passport.js");
+
+
+//     Users.prototype.validPassword = function(password) {
+//     return bcrypt.compareSync(password, this.password);
+// };
+// // before a User is created, their password will be automatically hash their password
+//     Users.addHook("beforeCreate", function(users) {
+//     users.password = bcrypt.hashSync(users.password, bcrypt.genSaltSync(10), null);
+//     });
+
+
+//     return Users;
