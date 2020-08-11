@@ -1,14 +1,15 @@
-
 var express = require("express");
 var router = express.Router();
-const MoodTracker = require ('../models/moodTracker')
+// const MoodTracker = require ('../models/moodTracker')
+const db = require ('../models')
+
 
 const MoodTrackerController = {};
 
 //GET
 MoodTrackerController.getMoodTracker = async (req, res) => {
     try {
-        const moodTracker = await MoodTracker.find();
+        const moodTracker = await db.MoodTracker.find();
         res.json({ moodTracker })
     } catch (error) {
         console.log(error)
@@ -19,7 +20,7 @@ MoodTrackerController.getMoodTracker = async (req, res) => {
 // CREATE
 MoodTrackerController.createMoodTracker = async (req, res) => {
   const { moodRate, didToday } = req.body;
-  const newMoodTracker = new MoodTracker({
+  const newMoodTracker = new db.MoodTracker({
     moodRate: moodRate,
       didToday: didToday,
     
@@ -30,13 +31,13 @@ MoodTrackerController.createMoodTracker = async (req, res) => {
 
 // DELETE
 MoodTrackerController.deleteMoodTracker = async (req, res) => {
-  await MoodTracker.findByIdAndDelete(req.params.id);
+  await db.MoodTracker.findByIdAndDelete(req.params.id);
   res.json('MoodTracker Deleted');
 }
 
 //UPDATE
 MoodTrackerController.updateMoodTracker = async (req, res) => {
-  await MoodTracker.findByIdAndUpdate(req.params.id, req.body);
+  await db.MoodTracker.findByIdAndUpdate(req.params.id, req.body);
   console.log(req.params.id, req.body)
   res.json('MoodTracker Updated');
 }
