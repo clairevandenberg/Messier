@@ -1,5 +1,5 @@
 module.exports = {
-    MoodTracker: require("./moodTracker"),
+    MoodTracker: require("./MoodTracker"),
     Journal: require("./journal")
 
   };
