@@ -1,6 +1,6 @@
 require('dotenv').config();
 
-var MoodTracker = require('../models/moodtracker');
+var MoodTracker = require('../models/moodTracker');
 
 const mongoose = require("mongoose");
 
