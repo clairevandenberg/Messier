@@ -35,7 +35,7 @@
     "react-charts": "^2.0.0-beta.7",
     "sequelize": "^6.3.3",
     "sequelize-pool": "^6.1.0",
-    "sqlite3": "^5.0.0",
+    "sqlite3": "^5.0.3",
     "tedious": "^8.3.0"
   },
   "devDependencies": {
